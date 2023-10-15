@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="age.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <title>Age Calculator</title>
+  </head>
+
+  <body>
+    <div class="heading">
+      <h1>** Age Calculator **</h1>
+      <h4>| The Slow Creep of Time |</h4>
+    </div>
+    <div class="input">
+      <fieldset>
+        <legend>Date</legend>
+        <input
+          id="date"
+          name="date"
+          required="required"
+          minlength="1"
+          maxlength="2"
+          type="text"
+          class="input-container"
+        />
+      </fieldset>
+      <fieldset>
+        <legend>Month</legend>
+        <input
+          id="month"
+          name="month"
+          required="required"
+          minlength="1"
+          maxlength="2"
+          type="text"
+          class="input-container"
+        />
+      </fieldset>
+      <fieldset>
+        <legend>Year</legend>
+        <input
+          id="year"
+          name="year"
+          required="required"
+          minlength="4"
+          maxlength="4"
+          type="text"
+          class="input-container"
+        />
+      </fieldset>
+    </div>
+    <center>
+      <div class="button">
+        <button
+          class="main-button"
+          value="Submit"
+          name="submit"
+          type="button"
+          onclick="age()"
+        >
+          Count...
+        </button>
+        <button class="reload-button" onclick="clearDisplay()">
+          <i class="bi bi-arrow-clockwise"></i>
+        </button>
+      </div>
+    </center>
+    <div class="input">
+      <fieldset>
+        <legend>Years</legend>
+        <input id="yearsInput" type="text" readonly class="input-container" />
+      </fieldset>
+      <fieldset>
+        <legend>Months</legend>
+        <input id="monthsInput" type="text" readonly class="input-container" />
+      </fieldset>
+      <fieldset>
+        <legend>Days</legend>
+        <input id="daysInput" type="text" readonly class="input-container" />
+      </fieldset>
+      <fieldset>
+        <legend>Weeks</legend>
+        <input id="weeksInput" type="text" readonly class="input-container" />
+      </fieldset>
+    </div>
+    <div class="input">
+      <fieldset>
+        <legend>Hours</legend>
+        <input id="hoursInput" type="text" readonly class="input-container" />
+      </fieldset>
+      <fieldset>
+        <legend>Minutes</legend>
+        <input id="minsInput" type="text" readonly class="input-container" />
+      </fieldset>
+      <fieldset>
+        <legend>Seconds</legend>
+        <input id="secInput" type="text" readonly class="input-container" />
+      </fieldset>
+    </div>
+
+    <script>
+      function age() {
+        // Get the user's input for date, month, and year
+        var userDay = parseInt(document.getElementById("date").value);
+        var userMonth = parseInt(document.getElementById("month").value);
+        var userYear = parseInt(document.getElementById("year").value);
+
+        // Validate input
+        if (isNaN(userDay) || isNaN(userMonth) || isNaN(userYear)) {
+          alert("Please enter valid numbers for date, month, and year.");
+          return; // Stop execution if input is not valid
+        }
+
+        // Additional validation for date, month, and year ranges
+        if (
+          userDay < 1 ||
+          userDay > 31 ||
+          userMonth < 1 ||
+          userMonth > 12
+        ) {
+          alert(
+            "Please enter valid date and month within the specified ranges."
+          );
+          return; // Stop execution if input is not valid
+        }
+
+        // Get the current date
+        var currentDate = new Date();
+        var currentDay = currentDate.getDate();
+        var currentMonth = 1 + currentDate.getMonth();
+        var currentYear = currentDate.getFullYear();
+
+        // Define the days in each month for later calculations
+        var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        // Adjust current day and month if the user's birthdate is in the future
+        if (userDay > currentDay) {
+          currentDay = currentDay + daysInMonth[currentMonth - 1];
+          currentMonth = currentMonth - 1;
+        }
+
+        // Adjust current month and year if the user's birth month is in the future
+        if (userMonth > currentMonth) {
+          currentMonth = currentMonth + 12;
+          currentYear = currentYear - 1;
+        }
+
+        // Calculate the age
+        var days = currentDay - userDay;
+        var months = currentMonth - userMonth;
+        var years = currentYear - userYear;
+
+        // Display the calculated age in the input fields
+        document.getElementById("yearsInput").value = years;
+        document.getElementById("monthsInput").value = months;
+        document.getElementById("daysInput").value = days;
+
+        // Calculate total weeks, hours, minutes, and seconds
+        var totalDays = years * 365 + months * 30 + days;
+        var totalHours = totalDays * 24;
+        var totalMinutes = totalHours * 60;
+        var totalSeconds = totalMinutes * 60;
+
+        // Display the calculated total in the input fields
+        document.getElementById("weeksInput").value = Math.floor(totalDays / 7);
+        document.getElementById("hoursInput").value = totalHours;
+        document.getElementById("minsInput").value = totalMinutes;
+        document.getElementById("secInput").value = totalSeconds;
+      }
+
+      function clearDisplay() {
+        // Clear the content of the input fields
+        document.getElementById("date").value = "";
+        document.getElementById("month").value = "";
+        document.getElementById("year").value = "";
+        document.getElementById("yearsInput").value = "";
+        document.getElementById("monthsInput").value = "";
+        document.getElementById("daysInput").value = "";
+        document.getElementById("weeksInput").value = "";
+        document.getElementById("hoursInput").value = "";
+        document.getElementById("minsInput").value = "";
+        document.getElementById("secInput").value = "";
+      }
+    </script>
+  </body>
+</html>
