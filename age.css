@@ -1,0 +1,131 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-image: url(age.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading {
+  text-align: center;
+}
+
+h1 {
+  display: inline-block;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-family: dark11;
+  border: 2px solid black;
+  border-left: none;
+  border-right: none;
+  padding: 5px;
+}
+
+h4 {
+  letter-spacing: 2px;
+  margin: auto;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-family: Amor Serif Pro Regular;
+}
+
+.input {
+  background-color: rgba(201, 196, 196, 0.2);
+  backdrop-filter: blur(3px);
+  margin-inline: 10px;
+  padding: 10px;
+  text-align: center;
+  border: none;
+}
+
+.input-container {
+  background-color: transparent;
+  background: transparent;
+  border: none;
+  margin-inline: 5px;
+  padding: 13px;
+  text-align: center;
+}
+
+input {
+  font-size: large;
+  padding: 0%;
+}
+
+input:focus {
+  outline: none;
+}
+
+fieldset {
+  display: inline-block;
+  padding: 0%;
+  text-align: start;
+  font-size: large;
+  font-weight: bold;
+  font-family: Amor Serif Pro Regular;
+  letter-spacing: 1px;
+  color: black;
+  border: 2px solid black;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+fieldset:hover {
+  border: whitesmoke 2px solid;
+  border-radius: 0%;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: rgba(201, 196, 196, 0.2);
+  backdrop-filter: blur(3px);
+}
+
+.main-button {
+  padding: 13px;
+  font-size: larger;
+  width: 130px;
+  border: black 1px solid;
+  border-radius: 4px;
+  background-color: black;
+  color: whitesmoke;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.main-button:hover {
+  background-color: rgba(201, 196, 196, 0.2);
+  backdrop-filter: blur(3px);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0px;
+  border: black 1px solid;
+  color: black;
+}
+
+.reload-button {
+  padding: 12px;
+  font-size: larger;
+  border: black 1px solid;
+  border-radius: 4px;
+  background-color: black;
+  color: whitesmoke;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.reload-button:hover {
+  background-color: rgba(201, 196, 196, 0.2);
+  backdrop-filter: blur(3px);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0px;
+  color: black;
+}
